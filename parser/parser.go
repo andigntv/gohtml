@@ -35,6 +35,10 @@ var singleTags = map[string]bool{
 }
 
 func New(text string) (Parser, error) {
+	return NewParser(text)
+}
+
+func NewParser(text string) (Parser, error) {
 	if len(text) == 0 {
 		return Parser{}, nil
 	}
@@ -108,7 +112,7 @@ func New(text string) (Parser, error) {
 			if tag == "script" {
 				tags[tag] = append(tags[tag], Parser{text: text[index:i]})
 			} else {
-				temp, err := New(text[index:i])
+				temp, err := NewParser(text[index:i])
 				if err != nil {
 					return Parser{}, err
 				}
