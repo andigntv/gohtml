@@ -1,4 +1,4 @@
-package gohtml
+package parser
 
 import (
 	"fmt"
